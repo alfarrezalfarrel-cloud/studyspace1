@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4263eb">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="StudySpace">
+<title>StudySpace — Sistem Informasi Sekolah</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#1f2937;--muted:#6b7280;--primary:#4263eb;--primary-light:#edf1ff;--border:#e5e7eb;--green:#15803d;--red:#dc2626;--orange:#c2410c;--shadow:0 8px 28px rgba(31,41,55,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px;background:var(--primary);color:white;font-weight:600}button.secondary{background:#eef0f5;color:#374151}button.danger{background:#fee2e2;color:#991b1b}button.small{padding:6px 9px;font-size:12px;border-radius:8px}.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}.sidebar{background:#fff;border-right:1px solid var(--border);padding:26px 16px;position:sticky;top:0;height:100vh}.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:800;margin:0 8px 28px}.brand-icon{background:var(--primary);color:#fff;width:38px;height:38px;display:grid;place-items:center;border-radius:12px;flex-shrink:0}.brand-name-wrap{display:flex;flex-direction:column;line-height:1.15}.brand-by{font-size:10px;font-weight:500;color:#9ca3af;margin-top:4px;letter-spacing:.2px}.nav-label{font-size:11px;text-transform:uppercase;color:#9ca3af;letter-spacing:1.2px;margin:22px 10px 8px}.nav{width:100%;text-align:left;color:#4b5563;background:transparent;margin:3px 0;padding:12px;border-radius:10px;font-weight:600}.nav.active,.nav:hover{background:var(--primary-light);color:var(--primary)}.sidebar-note{position:absolute;bottom:20px;left:18px;right:18px;background:#f3f5ff;padding:14px;border-radius:12px;font-size:12px;color:#59627b;line-height:1.5}.main{padding:28px;max-width:1500px;width:100%;margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:24px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--primary);font-weight:800}.topbar h1{font-size:28px;margin:5px 0}.sub{color:var(--muted);font-size:14px}.today{background:#fff;border:1px solid var(--border);padding:10px 14px;border-radius:12px;font-size:13px;color:#4b5563}.view{display:none}.view.active{display:block}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:22px}.stat,.panel,.content-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:19px;box-shadow:var(--shadow)}.stat-top{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:13px}.stat-icon{width:35px;height:35px;border-radius:10px;background:var(--primary-light);display:grid;place-items:center;font-size:17px}.stat-number{font-size:30px;font-weight:800;margin:15px 0 3px}.stat-foot{font-size:12px;color:var(--muted)}.grid2{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:18px}.panel{margin-bottom:18px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.panel h2,.content-card h2{font-size:17px;margin:0}.panel-head p{font-size:12px;color:var(--muted);margin:5px 0 0}.list{display:flex;flex-direction:column;gap:10px}.list-item{border:1px solid var(--border);border-radius:12px;padding:12px;display:flex;justify-content:space-between;align-items:center;gap:12px}.item-title{font-size:14px;font-weight:700}.item-meta{font-size:12px;color:var(--muted);margin-top:5px}.pill{display:inline-block;padding:5px 8px;border-radius:20px;background:#eef2ff;color:#4338ca;font-size:11px;font-weight:700}.pill.green{background:#dcfce7;color:#166534}.pill.orange{background:#ffedd5;color:#9a3412}.pill.red{background:#fee2e2;color:#991b1b}.empty{padding:25px 10px;text-align:center;color:var(--muted);font-size:13px}.quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.quick{background:#f8faff;border:1px solid #e5eafe;color:#3446a3;text-align:left;padding:14px}.quick span{display:block;font-size:22px;margin-bottom:9px}.quick b{font-size:13px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}.toolbar h2{margin:0;font-size:21px}.toolbar p{margin:5px 0 0;color:var(--muted);font-size:13px}.toolbar-actions{display:flex;gap:8px;flex-wrap:wrap}.table-wrap{overflow-x:auto}.data-table{border-collapse:collapse;width:100%;font-size:13px;min-width:620px}.data-table th{text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px;background:#f9fafb}.data-table th,.data-table td{padding:13px 12px;border-bottom:1px solid var(--border)}.data-table tr:last-child td{border-bottom:0}.week-table{min-width:0;table-layout:fixed}.week-table th{width:16.666%;text-align:center;padding:12px 5px}.week-table td{vertical-align:top;padding:8px 5px;border-right:1px solid var(--border);min-width:0}.week-table td:last-child{border-right:0}.subject-card{background:#f0f4ff;border:1px solid #dfe6ff;border-radius:9px;padding:8px;margin:3px 0 7px;overflow-wrap:anywhere}.subject-card b{display:block;font-size:12px;line-height:1.35;margin-bottom:7px}.subject-actions{display:flex;gap:3px;flex-wrap:wrap}.subject-actions button{font-size:10px;padding:5px 6px}.schedule-wrap{overflow-x:auto}.actions{display:flex;gap:5px;flex-wrap:wrap}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:700;color:#4b5563}.field input,.field select,.field textarea,.search{width:100%;border:1px solid #d1d5db;border-radius:10px;padding:11px 12px;background:#fff;color:var(--text);outline:none}.field input:focus,.field select:focus,.field textarea:focus,.search:focus{border-color:var(--primary);box-shadow:0 0 0 3px #4263eb18}.form-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:17px}.hidden{display:none!important}.calendar-head{display:flex;align-items:center;gap:10px}.calendar-head strong{min-width:145px;text-align:center}.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-left:1px solid var(--border);border-top:1px solid var(--border);border-radius:10px;overflow:hidden}.cal-dayname{padding:10px 4px;text-align:center;font-size:11px;color:var(--muted);font-weight:800;background:#f9fafb;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}.cal-cell{min-height:95px;padding:7px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);background:#fff}.cal-cell.muted{background:#fafafa;color:#c4c8d0}.cal-num{font-size:12px;font-weight:800}.cal-event{display:block;font-size:10px;line-height:1.3;padding:4px;margin-top:4px;background:#e0e7ff;color:#3730a3;border-radius:5px;overflow-wrap:anywhere}.cal-event.task{background:#ffedd5;color:#9a3412}.cal-event.done{background:#dcfce7;color:#166534}.notice{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:12px;color:#92400e;font-size:12px;line-height:1.5;margin-bottom:18px}.toast{position:fixed;right:20px;bottom:20px;background:#111827;color:white;padding:13px 18px;border-radius:12px;box-shadow:var(--shadow);opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none;z-index:20}.toast.show{opacity:1;transform:translateY(0)}.footer{text-align:center;color:#9ca3af;font-size:11px;padding:15px}.mobile-menu{display:none}
+@media(max-width:950px){.app{grid-template-columns:1fr}.sidebar{position:static;height:auto;padding:12px;display:flex;align-items:center;gap:8px;overflow-x:auto;border-right:0;border-bottom:1px solid var(--border)}.brand{margin:0 10px 0 0;white-space:nowrap}.brand-icon{width:32px;height:32px}.nav-label,.sidebar-note{display:none}.nav{width:auto;white-space:nowrap;margin:0;padding:10px}.main{padding:20px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}}
+@media(max-width:560px){.main{padding:14px}.topbar{align-items:flex-start;flex-direction:column}.topbar h1{font-size:24px}.today{width:100%}.stats{gap:9px}.stat{padding:13px}.stat-number{font-size:25px}.quick-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.cal-cell{min-height:70px;padding:4px}.cal-event{font-size:9px;padding:3px}.cal-dayname{font-size:9px}.panel{padding:13px}}
+.cal-event.holiday{background:#fff0d9;color:#8a4b08;border-left:2px solid #e5a23d}
+
+/* Pengaturan tampilan: mode gelap dan ukuran tulisan */
+body{zoom:var(--page-zoom,1)}
+body.dark-mode{--bg:#111827;--card:#1f2937;--text:#f3f4f6;--muted:#aab4c3;--primary:#8298ff;--primary-light:#29365f;--border:#374151;--green:#4ade80;--red:#f87171;--orange:#fb923c;--shadow:0 8px 28px rgba(0,0,0,.18)}
+body.dark-mode .sidebar,body.dark-mode .today,body.dark-mode .cal-cell,body.dark-mode .field input,body.dark-mode .field select,body.dark-mode .field textarea,body.dark-mode .search{background:#1f2937;color:var(--text);border-color:var(--border)}
+body.dark-mode .sidebar-note,body.dark-mode .quick{background:#263247;color:#dbeafe;border-color:#374151}
+body.dark-mode .nav{color:#d1d5db}body.dark-mode .nav.active,body.dark-mode .nav:hover{background:#29365f;color:#a5b4fc}
+body.dark-mode .data-table th,body.dark-mode .cal-dayname{background:#263244;color:#cbd5e1}
+body.dark-mode .cal-cell.muted{background:#182231;color:#64748b}
+body.dark-mode .subject-card{background:#273451;border-color:#3c4d75}
+body.dark-mode button.secondary{background:#374151;color:#f3f4f6}
+body.dark-mode button.danger{background:#572b32;color:#fecaca}
+body.dark-mode .pill{background:#303b58;color:#dbeafe}body.dark-mode .pill.green{background:#16452d;color:#bbf7d0}body.dark-mode .pill.orange{background:#593b1e;color:#fed7aa}body.dark-mode .pill.red{background:#572b32;color:#fecaca}
+body.dark-mode .cal-event{background:#303b58;color:#dbeafe}body.dark-mode .cal-event.task{background:#593b1e;color:#fed7aa}body.dark-mode .cal-event.done{background:#16452d;color:#bbf7d0}body.dark-mode .cal-event.holiday{background:#593b1e;color:#fed7aa}
+body.dark-mode .notice{background:#40351c;border-color:#715b24;color:#fde68a}
+body.dark-mode .toast{background:#030712;color:#f9fafb}
+body.dark-mode .cal-cell[style]{background:#273451!important}
+.calc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.calc-grid button{min-height:52px;font-size:18px}.calc-grid button:active{transform:scale(.98)}
+.settings-option{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}.settings-option:last-child{border-bottom:0}.settings-option label{font-weight:700}.settings-help{font-size:13px;color:var(--muted);margin-top:5px}.settings-option select{padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);min-width:150px}.settings-option input[type=range]{width:min(260px,45%)}
+.money-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}.money-card{background:var(--bg);border:1px solid var(--border);padding:16px;border-radius:13px}.money-label{font-size:12px;color:var(--muted)}.money-value{font-size:clamp(18px,3vw,25px);font-weight:800;margin-top:8px;overflow-wrap:anywhere}.money-progress{height:10px;background:var(--border);border-radius:99px;overflow:hidden;margin:12px 0}.money-progress span{display:block;height:100%;width:0;background:var(--green);transition:width .2s}.money-row{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid var(--border);padding:12px 0}.money-row:last-child{border-bottom:0}.money-row-title{font-weight:700}.money-row-meta{font-size:12px;color:var(--muted);margin-top:4px}@media(max-width:600px){.money-summary{grid-template-columns:1fr}.money-value{font-size:23px}}
+
+
+/* Optimasi lintas perangkat: Windows, Android, tablet, dan layar kecil */
+html{min-height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth}
+body{min-width:320px;min-height:100vh;min-height:100dvh;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom,0px)}
+button,.nav,select,input,textarea{touch-action:manipulation}
+button{min-height:40px}
+.app,.main,.view,.panel,.content-card{min-width:0}
+.sidebar{z-index:5;overscroll-behavior-x:contain;scrollbar-width:thin}
+.sidebar .nav{flex:0 0 auto}
+.main{overflow-wrap:anywhere}
+.table-wrap,.schedule-wrap{max-width:100%;-webkit-overflow-scrolling:touch}
+.calendar-grid{width:100%}
+.cal-cell{min-width:0;overflow:hidden}
+.cal-event{word-break:break-word}
+input,select,textarea{font-size:16px;max-width:100%}
+button:focus-visible,.nav:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #8298ff;outline-offset:2px}
+@media(max-width:950px){
+ .sidebar{position:sticky;top:0;height:auto;min-height:58px;padding:8px max(10px,env(safe-area-inset-left,0px));gap:6px;box-shadow:0 3px 12px rgba(0,0,0,.04)}
+ .brand{margin:0 8px 0 0;flex:0 0 auto;font-size:17px}
+ .brand-icon{width:32px;height:32px}
+ .nav{flex:0 0 auto!important;width:auto!important;padding:10px 12px!important;font-size:13px}
+ .main{padding:clamp(12px,3vw,22px)}
+}
+@media(max-width:560px){
+ .topbar{gap:10px;margin-bottom:17px}
+ .topbar h1{font-size:clamp(21px,6vw,26px);line-height:1.2}
+ .sub{line-height:1.45}
+ .today{font-size:12px;padding:10px 12px}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .stat{padding:12px;border-radius:13px}
+ .stat-top{font-size:11px;gap:6px}
+ .stat-number{font-size:24px;margin:11px 0 3px}
+ .stat-foot{font-size:11px}
+ .panel,.content-card{border-radius:13px}
+ .toolbar{align-items:stretch}
+ .toolbar-actions{width:100%}
+ .toolbar-actions button{flex:1}
+ .calendar-head{gap:5px;min-width:0}
+ .calendar-head strong{min-width:0;flex:1;font-size:13px}
+ .calendar-head button{padding:8px 11px}
+ .cal-dayname{padding:8px 1px;font-size:10px}
+ .cal-cell{min-height:64px;padding:3px}
+ .cal-num{font-size:10px}
+ .cal-event{font-size:8px;line-height:1.2;padding:2px;margin-top:3px}
+ .money-row{align-items:flex-start}
+ .toast{left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom,0px));text-align:center}
+ .form-actions{flex-wrap:wrap}
+ .form-actions button{flex:1}
+}
+@media(max-width:380px){
+ .brand{font-size:15px;gap:6px}
+ .brand-by{font-size:9px}
+ .nav{padding:9px 10px!important;font-size:12px}
+ .main{padding:10px}
+ .stat{padding:10px}
+ .cal-cell{min-height:56px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><span class="brand-icon">✦</span><span class="brand-name-wrap"><span>StudySpace</span><small class="brand-by">by alfarrezal</small></span></div>
+  <div class="nav-label">Menu utama</div>
+  <button class="nav active" data-view="dashboard">▦ &nbsp; Dashboard</button>
+  <button class="nav" data-view="jadwal">◷ &nbsp; Jadwal Pelajaran</button>
+  <button class="nav" data-view="tugas">✓ &nbsp; Tugas &amp; PR</button>
+  <button class="nav" data-view="kalender">▦ &nbsp; Kalender</button>
+  <button class="nav" data-view="kalkulator">🧮 &nbsp; Kalkulator</button>
+  <button class="nav" data-view="uangjajan">💰 &nbsp; Uang Jajan</button>
+  <button class="nav" data-view="pengaturan">⚙ &nbsp; Pengaturan</button>
+  <div class="sidebar-note"><b>Belajar lebih teratur ✨</b><br>Catat jadwal, selesaikan tugas, dan pantau perkembanganmu setiap hari.</div>
+</aside>
+<main class="main">
+  <header class="topbar">
+    <div><div class="eyebrow">Ruang belajar pribadimu</div><h1 id="pageTitle">Dashboard</h1><div class="sub" id="pageSubtitle">Semua kebutuhan sekolahmu dalam satu tempat.</div></div>
+    <div class="today" id="todayLabel"></div>
+  </header>
+
+  <section class="view active" id="view-dashboard">
+    <div class="stats">
+      <div class="stat"><div class="stat-top">Jadwal hari ini <span class="stat-icon">◷</span></div><div class="stat-number" id="statSchedule">0</div><div class="stat-foot">mata pelajaran</div></div>
+      <div class="stat"><div class="stat-top">Tugas belum selesai <span class="stat-icon">✎</span></div><div class="stat-number" id="statTasks">0</div><div class="stat-foot">perlu kamu kerjakan</div></div>
+      <div class="stat"><div class="stat-top">Agenda mendatang <span class="stat-icon">▦</span></div><div class="stat-number" id="statEvents">0</div><div class="stat-foot">acara dalam 30 hari</div></div>
+    </div>
+    <div class="grid2">
+      <div>
+        <div class="panel"><div class="panel-head"><div><h2>Jadwal hari ini</h2><p>Pelajaran sesuai hari ini</p></div><button class="small secondary" onclick="showView('jadwal')">Lihat semua</button></div><div class="list" id="todaySchedule"></div></div>
+        <div class="panel"><div class="panel-head"><div><h2>Tugas yang perlu diperhatikan</h2><p>Prioritaskan tenggat terdekat</p></div><button class="small secondary" onclick="showView('tugas')">Semua tugas</button></div><div class="list" id="upcomingTasks"></div></div>
+      </div>
+      <div>
+        <div class="panel"><div class="panel-head"><div><h2>Aksi cepat</h2><p>Tambahkan catatan baru</p></div></div><div class="quick-grid"><button class="quick" onclick="openForm('jadwal')"><span>＋</span><b>Jadwal</b></button><button class="quick" onclick="openForm('tugas')"><span>✎</span><b>Tugas / PR</b></button></div></div>
+        <div class="panel"><div class="panel-head"><div><h2>Agenda berikutnya</h2><p>Ujian, hari libur, dan acara</p></div><button class="small secondary" onclick="showView('kalender')">Kalender</button></div><div class="list" id="upcomingEvents"></div></div>
+        <div class="notice">💡 <b>Tips:</b> Data tersimpan di browser ini. Ekspor cadangan secara berkala agar data tidak hilang saat browser dibersihkan.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-jadwal">
+    <div class="toolbar"><div><h2>Jadwal Pelajaran</h2><p>Susun mata pelajaran dari Senin sampai Sabtu.</p></div><div class="toolbar-actions"><button onclick="openForm('jadwal')">＋ Tambah Jadwal</button></div></div>
+    <div class="content-card"><div class="table-wrap schedule-wrap"><table class="data-table week-table"><thead><tr><th>Senin</th><th>Selasa</th><th>Rabu</th><th>Kamis</th><th>Jumat</th><th>Sabtu</th></tr></thead><tbody id="scheduleTable"></tbody></table></div><div class="empty hidden" id="scheduleEmpty">Belum ada jadwal. Tekan “Tambah Jadwal” untuk mulai.</div></div>
+  </section>
+
+  <section class="view" id="view-tugas">
+    <div class="toolbar"><div><h2>Tugas &amp; PR</h2><p>Catat tenggat dan tandai tugas yang selesai.</p></div><div class="toolbar-actions"><button onclick="openForm('tugas')">＋ Tambah Tugas</button></div></div>
+    <div class="content-card"><div class="toolbar"><input class="search" id="taskSearch" placeholder="Cari tugas atau mata pelajaran..." style="max-width:330px"><select id="taskFilter" style="padding:10px;border:1px solid #d1d5db;border-radius:10px"><option value="all">Semua tugas</option><option value="todo">Belum selesai</option><option value="done">Selesai</option></select></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Tugas</th><th>Mata pelajaran</th><th>Tenggat</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="taskTable"></tbody></table></div><div class="empty hidden" id="taskEmpty">Belum ada tugas yang cocok.</div></div>
+  </section>
+
+  <section class="view" id="view-kalender">
+    <div class="toolbar"><div><h2>Kalender Akademik</h2><p>Lihat ujian, acara, tenggat tugas, dan hari penting.</p></div><div class="toolbar-actions"><button onclick="openForm('agenda')">＋ Tambah Agenda</button></div></div>
+    <div class="content-card"><div class="toolbar"><div class="calendar-head"><button class="secondary" onclick="changeMonth(-1)">‹</button><strong id="monthLabel"></strong><button class="secondary" onclick="changeMonth(1)">›</button></div><button class="secondary" onclick="goToday()">Hari ini</button></div><div class="calendar-grid" id="calendarGrid"></div><div class="footer">★ Hari besar tahunan ditambahkan otomatis. Tanggal hari besar Islam adalah perkiraan kalender Umm al-Qura dan dapat berbeda dari keputusan resmi pemerintah Indonesia.</div></div>
+    <div class="panel" style="margin-top:18px"><div class="panel-head"><div><h2>Daftar agenda</h2><p>Agenda yang kamu tambahkan sendiri.</p></div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Tanggal</th><th>Agenda</th><th>Kategori</th><th>Aksi</th></tr></thead><tbody id="eventTable"></tbody></table></div><div class="empty hidden" id="eventEmpty">Belum ada agenda.</div></div>
+  </section>
+
+  <section class="view" id="view-kalkulator">
+    <div class="toolbar"><div><h2>Kalkulator</h2><p>Hitung soal matematika dengan mudah.</p></div></div>
+    <div class="content-card" style="max-width:430px;margin:0 auto">
+      <div id="calcDisplay" role="status" aria-live="polite" style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:18px 14px;min-height:90px;text-align:right;font-size:clamp(24px,5vw,34px);font-weight:700;overflow-wrap:anywhere;display:flex;align-items:flex-end;justify-content:flex-end;margin-bottom:14px">0</div>
+      <div class="calc-grid">
+        <button class="secondary" onclick="calcClear()">AC</button><button class="secondary" onclick="calcBackspace()">⌫</button><button class="secondary" onclick="calcAppend('%')">%</button><button onclick="calcAppend('/')">÷</button>
+        <button class="secondary" onclick="calcAppend('7')">7</button><button class="secondary" onclick="calcAppend('8')">8</button><button class="secondary" onclick="calcAppend('9')">9</button><button onclick="calcAppend('*')">×</button>
+        <button class="secondary" onclick="calcAppend('4')">4</button><button class="secondary" onclick="calcAppend('5')">5</button><button class="secondary" onclick="calcAppend('6')">6</button><button onclick="calcAppend('-')">−</button>
+        <button class="secondary" onclick="calcAppend('1')">1</button><button class="secondary" onclick="calcAppend('2')">2</button><button class="secondary" onclick="calcAppend('3')">3</button><button onclick="calcAppend('+')">+</button>
+        <button class="secondary" onclick="calcAppend('(')">(</button><button class="secondary" onclick="calcAppend('0')">0</button><button class="secondary" onclick="calcAppend('.')">.</button><button onclick="calcAppend(')')">)</button>
+        <button style="grid-column:1/-1;background:#15803d" onclick="calcEquals()">= Hitung</button>
+      </div>
+      <p class="settings-help" style="margin-top:12px">Tips: kamu juga bisa mengetik angka dan operator dari keyboard komputer.</p>
+    </div>
+  </section>
+
+  <section class="view" id="view-uangjajan">
+    <div class="toolbar"><div><h2>Uang Jajan Mingguan</h2><p>Atur uang jajan, catat pengeluaran, dan lihat sisa uangmu setiap minggu.</p></div></div>
+    <div class="panel">
+      <div class="form-grid">
+        <div class="field"><label for="weeklyBudget">Uang jajan untuk satu minggu (Rp)</label><input id="weeklyBudget" type="number" min="0" step="1000" placeholder="Contoh: 100000"></div>
+        <div class="field" style="justify-content:end"><button onclick="saveWeeklyBudget()">Simpan uang jajan</button></div>
+      </div>
+      <p class="settings-help">Perhitungan minggu berjalan dari Senin sampai Minggu. Data tersimpan di browser ini.</p>
+    </div>
+    <div class="money-summary">
+      <div class="money-card"><div class="money-label">Uang jajan minggu ini</div><div class="money-value" id="moneyBudgetLabel">Rp0</div></div>
+      <div class="money-card"><div class="money-label">Total pengeluaran</div><div class="money-value" id="moneySpentLabel">Rp0</div></div>
+      <div class="money-card"><div class="money-label">Sisa uang</div><div class="money-value" id="moneyRemainingLabel">Rp0</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div><h2>Penggunaan uang jajan</h2><p id="moneyWeekLabel">Ringkasan minggu ini</p></div></div>
+      <div class="money-progress"><span id="moneyProgress"></span></div><div class="settings-help" id="moneyProgressText">Belum ada pengeluaran yang dicatat.</div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div><h2>Catat pengeluaran</h2><p>Masukkan setiap kali kamu menggunakan uang.</p></div></div>
+      <form id="expenseForm" class="form-grid">
+        <div class="field"><label for="expenseName">Untuk apa?</label><input id="expenseName" required maxlength="80" placeholder="Contoh: jajan di kantin"></div>
+        <div class="field"><label for="expenseAmount">Jumlah (Rp)</label><input id="expenseAmount" type="number" min="1" step="500" required placeholder="Contoh: 10000"></div>
+        <div class="field"><label for="expenseCategory">Kategori</label><select id="expenseCategory"><option>Makanan & minuman</option><option>Transportasi</option><option>Alat sekolah</option><option>Tabungan</option><option>Lainnya</option></select></div>
+        <div class="field"><label for="expenseDate">Tanggal</label><input id="expenseDate" type="date" required></div>
+        <div class="field full"><button type="submit">＋ Simpan pengeluaran</button></div>
+      </form>
+    </div>
+    <div class="panel"><div class="panel-head"><div><h2>Riwayat pengeluaran minggu ini</h2><p>Pengeluaran dari Senin sampai Minggu.</p></div><button class="small secondary" onclick="clearWeeklyExpenses()">Hapus riwayat minggu ini</button></div><div id="expenseList" class="list"><div class="empty">Belum ada pengeluaran.</div></div></div>
+  </section>
+
+  <section class="view" id="view-pengaturan">
+    <div class="toolbar"><div><h2>Pengaturan Tampilan</h2><p>Sesuaikan StudySpace supaya nyaman dilihat.</p></div></div>
+    <div class="content-card">
+      <div class="settings-option"><div><label for="themeSelect">Mode tampilan</label><div class="settings-help">Pilih tampilan terang atau gelap.</div></div><select id="themeSelect" aria-label="Mode tampilan"><option value="light">☀️ Mode terang</option><option value="dark">🌙 Mode gelap</option></select></div>
+      <div class="settings-option"><div><label for="fontSizeSelect">Ukuran tampilan tulisan</label><div class="settings-help">Pilih ukuran kecil, normal, atau besar.</div></div><select id="fontSizeSelect" aria-label="Ukuran tulisan"><option value="0.9">Kecil</option><option value="1">Normal</option><option value="1.1">Besar</option><option value="1.2">Sangat besar</option></select></div>
+      <div class="panel" style="margin:18px 0 0"><h2>Contoh tulisan</h2><p class="settings-help">Begini tampilan tulisanmu dengan pengaturan yang dipilih.</p><div style="padding:12px 0"><b>Belajar lebih teratur ✨</b><p class="sub">Jadwal, tugas, dan hari penting ada di satu tempat.</p></div></div>
+      <p class="settings-help">Pengaturan tersimpan otomatis di browser ini.</p>
+    </div>
+  </section>
+
+  <div class="footer">StudySpace · Planner sekolah pribadi · Data tersimpan di browser kamu</div>
+</main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Modal form -->
+<div id="modal" class="hidden" style="position:fixed;inset:0;background:#11182788;z-index:10;display:none;align-items:center;justify-content:center;padding:18px">
+  <div class="content-card" style="width:min(560px,100%);max-height:90vh;overflow:auto">
+    <div class="panel-head"><div><h2 id="modalTitle">Tambah data</h2><p id="modalSubtitle">Isi informasi di bawah.</p></div><button class="secondary" onclick="closeForm()">✕</button></div>
+    <form id="dataForm"><div id="formFields" class="form-grid"></div><div class="form-actions"><button type="button" class="secondary" onclick="closeForm()">Batal</button><button type="submit">Simpan</button></div></form>
+  </div>
+</div>
+
+<script>
+const STORE_KEY='studyspace_data_v1';
+const DAYS=['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+const DAY_ORDER=['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
+const $=id=>document.getElementById(id);
+const todayISO=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+const freshData=()=>({schedules:[],tasks:[],grades:[],events:[]});
+let data=loadData(), calendarDate=new Date(), editing={type:null,id:null};
+function loadData(){try{return {...freshData(),...JSON.parse(localStorage.getItem(STORE_KEY)||'{}')}}catch(e){return freshData()}}
+function saveData(){try{localStorage.setItem(STORE_KEY,JSON.stringify(data))}catch(e){showToast('Browser membatasi penyimpanan. Coba buka di Chrome biasa.')}renderAll()}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function fmtDate(s){if(!s)return '—';let [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:'numeric'})}
+function fmtDayDate(s){if(!s)return '';let [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d).toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'short'})}
+function timeSort(a,b){return (a.subject||'').localeCompare(b.subject||'')}
+function timeRange(x){return ''}
+function showToast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400)}
+function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('.nav').forEach(n=>n.classList.toggle('active',n.dataset.view===name));const labels={dashboard:['Dashboard','Semua kebutuhan sekolahmu dalam satu tempat.'],jadwal:['Jadwal Pelajaran','Atur mata pelajaran dan jam belajarmu.'],tugas:['Tugas & PR','Kelola pekerjaan sekolahmu.'],nilai:['Nilai Akademik','Pantau hasil belajarmu.'],kalender:['Kalender Akademik','Rencanakan kegiatan dan hari penting.'],kalkulator:['Kalkulator','Hitung soal matematika dengan mudah.'],uangjajan:['Uang Jajan Mingguan','Atur uang jajan dan catat pengeluaranmu.'],pengaturan:['Pengaturan','Atur mode tampilan dan ukuran tulisan.']};$('pageTitle').textContent=labels[name][0];$('pageSubtitle').textContent=labels[name][1];if(name==='kalender')renderCalendar();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav').forEach(n=>n.addEventListener('click',()=>showView(n.dataset.view)));
+function field(name,label,type='text',opts={}){let req=opts.required===false?'':'required';let cls=opts.full?'field full':'field';let value=opts.value??'';if(type==='select'){return `<div class="${cls}"><label for="${name}">${label}</label><select id="${name}" name="${name}" ${req}>${(opts.options||[]).map(o=>`<option value="${esc(o)}" ${o===value?'selected':''}>${esc(o)}</option>`).join('')}</select></div>`}if(type==='textarea')return `<div class="${cls}"><label for="${name}">${label}</label><textarea id="${name}" name="${name}" rows="3" ${req}>${esc(value)}</textarea></div>`;return `<div class="${cls}"><label for="${name}">${label}</label><input id="${name}" name="${name}" type="${type}" value="${esc(value)}" ${req} ${opts.min!==undefined?`min="${opts.min}"`:''} ${opts.max!==undefined?`max="${opts.max}"`:''} ${opts.step?`step="${opts.step}"`:''} ${opts.required===false?'':'required'}></div>`}
+const forms={
+jadwal:{title:'Jadwal Pelajaran',subtitle:'Pilih hari dan masukkan mata pelajaran.',fields:()=>field('day','Hari','select',{options:['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],value:'Senin'})+field('subject','Mata pelajaran')+field('notes','Catatan','textarea',{required:false,full:true})},
+tugas:{title:'Tugas / PR',subtitle:'Jangan lupa catat tenggat pengumpulan.',fields:()=>field('title','Nama tugas')+field('subject','Mata pelajaran')+field('due','Tenggat','date',{value:todayISO()})+field('priority','Prioritas','select',{options:['Rendah','Sedang','Tinggi'],value:'Sedang'})+field('notes','Catatan','textarea',{required:false,full:true})},
+agenda:{title:'Agenda Kalender',subtitle:'Tambahkan ujian, kegiatan, atau hari penting.',fields:()=>field('date','Tanggal','date',{value:todayISO()})+field('title','Nama agenda')+field('category','Kategori','select',{options:['Ujian','Kegiatan sekolah','Hari libur','Hari besar','Pribadi','Lainnya'],value:'Kegiatan sekolah'})+field('notes','Catatan','textarea',{required:false,full:true})}
+};
+function openForm(type,id=null){editing={type,id};const cfg=forms[type];const old=id?data[type==='jadwal'?'schedules':type==='tugas'?'tasks':type==='nilai'?'grades':'events'].find(x=>x.id===id):null;$('modalTitle').textContent=(old?'Edit ':'Tambah ')+cfg.title;$('modalSubtitle').textContent=cfg.subtitle;$('formFields').innerHTML=cfg.fields();if(old){Object.entries(old).forEach(([k,v])=>{const el=$('formFields').querySelector(`[name="${k}"]`);if(el)el.value=v})}$('modal').classList.remove('hidden');$('modal').style.display='flex'}
+function closeForm(){$('modal').classList.add('hidden');$('modal').style.display='none';$('dataForm').reset();editing={type:null,id:null}}
+function formObject(form){return Object.fromEntries(new FormData(form).entries())}
+$('dataForm').addEventListener('submit',e=>{e.preventDefault();const {type,id}=editing;const obj=formObject(e.target);obj.id=id||uid();if(type==='jadwal'){delete obj.start;delete obj.end;delete obj.teacher}const key=type==='jadwal'?'schedules':type==='tugas'?'tasks':type==='nilai'?'grades':'events';const index=data[key].findIndex(x=>x.id===obj.id);if(index>=0)data[key][index]=obj;else data[key].push(obj);closeForm();saveData();showToast(id?'Data berhasil diperbarui.':'Data berhasil disimpan.')});
+function removeItem(key,id){if(!confirm('Yakin ingin menghapus data ini?'))return;data[key]=data[key].filter(x=>x.id!==id);saveData();showToast('Data dihapus.')}
+function openForm(type){openFormInternal(type,null)}
+function openFormInternal(type,id){editing={type,id};const cfg=forms[type];const key=type==='jadwal'?'schedules':type==='tugas'?'tasks':type==='nilai'?'grades':'events';const old=id?data[key].find(x=>x.id===id):null;$('modalTitle').textContent=(old?'Edit ':'Tambah ')+cfg.title;$('modalSubtitle').textContent=cfg.subtitle;$('formFields').innerHTML=cfg.fields();if(old){Object.entries(old).forEach(([k,v])=>{const el=$('formFields').querySelector(`[name="${k}"]`);if(el)el.value=v})}$('modal').classList.remove('hidden');$('modal').style.display='flex'}
+function editItem(type,id){openFormInternal(type,id)}
+function taskStatus(t){if(t.done)return '<span class="pill green">Selesai</span>';if(t.due<todayISO())return '<span class="pill red">Terlambat</span>';if(t.due===todayISO())return '<span class="pill orange">Hari ini</span>';return '<span class="pill">Belum selesai</span>'}
+// Hari besar tahunan otomatis. Hari berbasis kalender Hijriah dihitung dari kalender Umm al-Qura perangkat.
+const FIXED_HOLIDAYS=[
+ ['01-01','Tahun Baru Masehi'],['01-10','Hari Gerakan Satu Juta Pohon'],['01-25','Hari Gizi Nasional'],
+ ['02-09','Hari Pers Nasional'],['02-14','Hari Valentine'],['03-08','Hari Perempuan Internasional'],['03-21','Hari Hutan Sedunia'],['03-22','Hari Air Sedunia'],
+ ['04-02','Hari Buku Anak Internasional'],['04-22','Hari Bumi'],['04-21','Hari Kartini'],['05-01','Hari Buruh Internasional'],['05-02','Hari Pendidikan Nasional'],['05-20','Hari Kebangkitan Nasional'],
+ ['06-01','Hari Lahir Pancasila'],['06-05','Hari Lingkungan Hidup Sedunia'],['06-23','Hari Anak Nasional'],['07-23','Hari Anak Nasional'],['08-17','Hari Kemerdekaan Republik Indonesia'],
+ ['09-01','Hari Polisi Wanita'],['09-17','Hari Perhubungan Nasional'],['10-01','Hari Kesaktian Pancasila'],['10-02','Hari Batik Nasional'],['10-05','Hari Guru Sedunia'],['10-28','Hari Sumpah Pemuda'],
+ ['11-10','Hari Pahlawan'],['11-25','Hari Guru Nasional'],['12-01','Hari AIDS Sedunia'],['12-10','Hari Hak Asasi Manusia'],['12-22','Hari Ibu'],['12-25','Hari Raya Natal'],['12-31','Malam Tahun Baru']
+];
+function isoDate(y,m,d){return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
+function getHolidayEvents(year){
+ const out=FIXED_HOLIDAYS.map(([md,title])=>({date:`${year}-${md}`,title,category:'Hari besar',builtin:true}));
+ // Hari besar Islam: kalender Umm al-Qura; tanggal dapat berbeda dari keputusan resmi Indonesia.
+ try{const fmt=new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn',{day:'numeric',month:'numeric'});
+  const islamicNames={ '10-1':'Tahun Baru Islam (1 Muharam)','3-12':'Maulid Nabi Muhammad SAW (perkiraan)','7-27':'Isra Mikraj Nabi Muhammad SAW (perkiraan)','10-1':'Idul Fitri (1 Syawal)','12-10':'Idul Adha (10 Zulhijah)' };
+  for(let d=new Date(year,0,1,12);d.getFullYear()===year;d.setDate(d.getDate()+1)){
+   const parts=Object.fromEntries(fmt.formatToParts(d).filter(x=>x.type==='day'||x.type==='month').map(x=>[x.type,Number(x.value)]));
+   const md=`${parts.month}-${parts.day}`;let title=null;
+   if(parts.month===1&&parts.day===1)title='Tahun Baru Islam (1 Muharam)';
+   else if(parts.month===3&&parts.day===12)title='Maulid Nabi Muhammad SAW (perkiraan)';
+   else if(parts.month===7&&parts.day===27)title='Isra Mikraj Nabi Muhammad SAW (perkiraan)';
+   else if(parts.month===10&&parts.day===1)title='Hari Raya Idul Fitri (perkiraan)';
+   else if(parts.month===12&&parts.day===10)title='Hari Raya Idul Adha (perkiraan)';
+   if(title)out.push({date:isoDate(year,d.getMonth()+1,d.getDate()),title,category:'Hari besar',builtin:true});
+  }
+ }catch(e){}
+ return out;
+}
+function holidaysBetween(startISO,endISO){const a=Number(startISO.slice(0,4)),b=Number(endISO.slice(0,4));let all=[];for(let y=a;y<=b;y++)all.push(...getHolidayEvents(y));return all.filter(e=>e.date>=startISO&&e.date<=endISO)}
+function allCalendarEvents(){return [...data.events,...getHolidayEvents(calendarDate.getFullYear())]}
+function renderDashboard(){const todayName=DAYS[new Date().getDay()];const schedules=data.schedules.filter(s=>s.day===todayName).sort(timeSort);$('statSchedule').textContent=schedules.length;$('statTasks').textContent=data.tasks.filter(t=>!t.done).length;const today=new Date();const end=new Date(today);end.setDate(end.getDate()+30);const endISO=`${end.getFullYear()}-${String(end.getMonth()+1).padStart(2,'0')}-${String(end.getDate()).padStart(2,'0')}`;$('statEvents').textContent=[...data.events,...holidaysBetween(todayISO(),endISO)].filter(e=>e.date>=todayISO()&&e.date<=endISO).length;
+$('todaySchedule').innerHTML=schedules.length?schedules.map(s=>`<div class="list-item"><div><div class="item-title">${esc(s.subject)}</div></div><span class="pill">${esc(s.day)}</span></div>`).join(''):'<div class="empty">Tidak ada jadwal yang dicatat untuk hari ini.</div>';
+const tasks=data.tasks.filter(t=>!t.done).sort((a,b)=>a.due.localeCompare(b.due)).slice(0,5);$('upcomingTasks').innerHTML=tasks.length?tasks.map(t=>`<div class="list-item"><div><div class="item-title">${esc(t.title)}</div><div class="item-meta">${esc(t.subject)} · Tenggat ${fmtDate(t.due)}</div></div>${taskStatus(t)}</div>`).join(''):'<div class="empty">Semua tugas selesai, atau belum ada tugas. 🎉</div>';
+const events=[...data.events,...holidaysBetween(todayISO(),`${today.getFullYear()+1}-12-31`)].filter(e=>e.date>=todayISO()).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,4);$('upcomingEvents').innerHTML=events.length?events.map(e=>`<div class="list-item"><div><div class="item-title">${esc(e.title)}</div><div class="item-meta">${fmtDate(e.date)}</div></div><span class="pill">${esc(e.category)}</span></div>`).join(''):'<div class="empty">Belum ada agenda mendatang.</div>'}
+function renderSchedules(){const days=['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];const byDay=days.map(day=>data.schedules.filter(s=>s.day===day));$('scheduleTable').innerHTML=`<tr>${byDay.map(items=>`<td>${items.length?items.map(s=>`<div class="subject-card"><b>${esc(s.subject)}</b><div class="subject-actions"><button class="small secondary" onclick="editItem('jadwal','${s.id}')">Edit</button><button class="small danger" onclick="removeItem('schedules','${s.id}')">Hapus</button></div></div>`).join(''):'<div class="item-meta" style="text-align:center">—</div>'}</td>`).join('')}</tr>`;$('scheduleEmpty').classList.toggle('hidden',data.schedules.length>0)}
+function renderTasks(){const q=($('taskSearch').value||'').toLowerCase(),filter=$('taskFilter').value;const arr=[...data.tasks].filter(t=>(t.title+' '+t.subject).toLowerCase().includes(q)&&(filter==='all'||(filter==='done'?t.done:!t.done))).sort((a,b)=>Number(a.done)-Number(b.done)||a.due.localeCompare(b.due));$('taskTable').innerHTML=arr.map(t=>`<tr><td><b>${esc(t.title)}</b>${t.notes?`<div class="item-meta">${esc(t.notes)}</div>`:''}</td><td>${esc(t.subject)}</td><td>${fmtDate(t.due)}${t.priority==='Tinggi'?'<div class="item-meta" style="color:#dc2626">Prioritas tinggi</div>':''}</td><td>${taskStatus(t)}</td><td><div class="actions"><button class="small ${t.done?'secondary':''}" onclick="toggleTask('${t.id}')">${t.done?'Buka lagi':'Selesai ✓'}</button><button class="small secondary" onclick="editItem('tugas','${t.id}')">Edit</button><button class="small danger" onclick="removeItem('tasks','${t.id}')">Hapus</button></div></td></tr>`).join('');$('taskEmpty').classList.toggle('hidden',arr.length>0)}
+function toggleTask(id){const t=data.tasks.find(x=>x.id===id);if(t)t.done=!t.done;saveData();showToast(t&&t.done?'Tugas ditandai selesai!':'Status tugas diperbarui.')}
+function renderCalendar(){const y=calendarDate.getFullYear(),m=calendarDate.getMonth();$('monthLabel').textContent=calendarDate.toLocaleDateString('id-ID',{month:'long',year:'numeric'});const grid=$('calendarGrid');const names=['Sen','Sel','Rab','Kam','Jum','Sab','Min'];let html=names.map(n=>`<div class="cal-dayname">${n}</div>`).join('');const first=new Date(y,m,1),offset=(first.getDay()+6)%7,days=new Date(y,m+1,0).getDate(),prevDays=new Date(y,m,0).getDate();for(let i=0;i<42;i++){let dayNum,monthOffset=0;if(i<offset){dayNum=prevDays-offset+i+1;monthOffset=-1}else if(i>=offset+days){dayNum=i-(offset+days)+1;monthOffset=1}else dayNum=i-offset+1;const date=new Date(y,m+monthOffset,dayNum);const iso=`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;let evs=[...data.events,...getHolidayEvents(date.getFullYear())].filter(e=>e.date===iso).map(e=>`<span class="cal-event ${e.builtin?'holiday':''}">${e.builtin?'★ ':''}${esc(e.title)}</span>`);evs.push(...data.tasks.filter(t=>t.due===iso).map(t=>`<span class="cal-event task ${t.done?'done':''}">PR: ${esc(t.title)}</span>`));const isToday=iso===todayISO();html+=`<div class="cal-cell ${monthOffset?'muted':''}" ${isToday?'style="background:#f0f4ff"':''}><div class="cal-num">${dayNum}${isToday?' ·':''}</div>${evs.slice(0,3).join('')}${evs.length>3?`<span class="cal-event">+${evs.length-3} lagi</span>`:''}</div>`}grid.innerHTML=html;renderEvents()}
+function renderEvents(){const y=calendarDate.getFullYear();const arr=[...data.events,...getHolidayEvents(y)].sort((a,b)=>a.date.localeCompare(b.date));$('eventTable').innerHTML=arr.map(e=>{const note=e.builtin?`<div class="item-meta">Berulang otomatis setiap tahun${/perkiraan/.test(e.title)?' · tanggal dapat berbeda dari ketetapan resmi':''}</div>`:(e.notes?`<div class="item-meta">${esc(e.notes)}</div>`:'');const actions=e.builtin?'<span class="pill">Otomatis</span>':`<div class="actions"><button class="small secondary" onclick="editItem('agenda','${e.id}')">Edit</button><button class="small danger" onclick="removeItem('events','${e.id}')">Hapus</button></div>`;return `<tr><td>${fmtDate(e.date)}</td><td><b>${esc(e.title)}</b>${note}</td><td>${esc(e.category)}</td><td>${actions}</td></tr>`}).join('');$('eventEmpty').classList.toggle('hidden',arr.length>0)}
+function changeMonth(n){calendarDate.setMonth(calendarDate.getMonth()+n);renderCalendar()}
+function goToday(){calendarDate=new Date();renderCalendar()}
+function renderAll(){renderDashboard();renderSchedules();renderTasks();renderCalendar()}
+$('taskSearch').addEventListener('input',renderTasks);$('taskFilter').addEventListener('change',renderTasks);
+// Pengelola uang jajan mingguan
+const MONEY_KEY='studyspace_weekly_money_v1';
+function moneyLoad(){try{return {...{budget:0,expenses:[]},...JSON.parse(localStorage.getItem(MONEY_KEY)||'{}')}}catch(e){return {budget:0,expenses:[]}}}
+let moneyData=moneyLoad();
+function moneySave(){try{localStorage.setItem(MONEY_KEY,JSON.stringify(moneyData))}catch(e){showToast('Browser membatasi penyimpanan. Coba buka di Chrome biasa.')}renderMoney()}
+function rupiah(n){return new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n)||0)}
+function weekStartISO(date=new Date()){const d=new Date(date.getFullYear(),date.getMonth(),date.getDate());d.setDate(d.getDate()-(d.getDay()+6)%7);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function weekEndISO(date=new Date()){const d=new Date(date.getFullYear(),date.getMonth(),date.getDate());d.setDate(d.getDate()+6-(d.getDay()+6)%7);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function saveWeeklyBudget(){const input=$('weeklyBudget');const value=Number(input.value);if(input.value.trim()===''||!Number.isFinite(value)||value<0){showToast('Masukkan jumlah uang jajan yang valid.');return}moneyData.budget=value;moneySave();showToast('Uang jajan mingguan disimpan!')}
+function renderMoney(){if(!$('expenseList'))return;const start=weekStartISO(),end=weekEndISO();const expenses=moneyData.expenses.filter(e=>e.date>=start&&e.date<=end).sort((a,b)=>b.date.localeCompare(a.date)||b.createdAt-a.createdAt);const spent=expenses.reduce((sum,e)=>sum+Number(e.amount||0),0);const remaining=Number(moneyData.budget||0)-spent;$('weeklyBudget').value=moneyData.budget||'';$('expenseDate').value=$('expenseDate').value||todayISO();$('moneyBudgetLabel').textContent=rupiah(moneyData.budget);$('moneySpentLabel').textContent=rupiah(spent);$('moneyRemainingLabel').textContent=rupiah(remaining);$('moneyRemainingLabel').style.color=remaining<0?'var(--red)':'var(--green)';$('moneyWeekLabel').textContent=`${fmtDate(start)} – ${fmtDate(end)}`;const percent=moneyData.budget>0?Math.min(100,spent/moneyData.budget*100):0;$('moneyProgress').style.width=percent+'%';$('moneyProgress').style.background=spent>moneyData.budget?'var(--red)':percent>=80?'var(--orange)':'var(--green)';$('moneyProgressText').textContent=moneyData.budget>0?`${Math.round(spent/moneyData.budget*100)}% uang jajan telah digunakan${remaining<0?'. Pengeluaranmu melebihi anggaran!':'.'}`:`Tentukan uang jajan mingguan untuk melihat persentase penggunaan.`;$('expenseList').innerHTML=expenses.length?expenses.map(e=>`<div class="money-row"><div><div class="money-row-title">${esc(e.name)}</div><div class="money-row-meta">${esc(e.category)} · ${fmtDate(e.date)}</div></div><div style="text-align:right;flex-shrink:0"><b>${rupiah(e.amount)}</b><div style="margin-top:5px"><button class="small danger" onclick="removeExpense('${e.id}')">Hapus</button></div></div></div>`).join(''):'<div class="empty">Belum ada pengeluaran minggu ini. Catat pengeluaran pertamamu di atas.</div>'}
+$('expenseForm').addEventListener('submit',e=>{e.preventDefault();const amount=Number($('expenseAmount').value);if(!Number.isFinite(amount)||amount<=0){showToast('Jumlah pengeluaran harus lebih dari nol.');return}moneyData.expenses.push({id:uid(),name:$('expenseName').value.trim(),amount,category:$('expenseCategory').value,date:$('expenseDate').value||todayISO(),createdAt:Date.now()});moneySave();e.target.reset();$('expenseDate').value=todayISO();showToast('Pengeluaran berhasil dicatat!')});
+function removeExpense(id){if(!confirm('Hapus catatan pengeluaran ini?'))return;moneyData.expenses=moneyData.expenses.filter(e=>e.id!==id);moneySave();showToast('Pengeluaran dihapus.')}
+function clearWeeklyExpenses(){const start=weekStartISO(),end=weekEndISO();if(!confirm('Hapus semua catatan pengeluaran minggu ini?'))return;moneyData.expenses=moneyData.expenses.filter(e=>e.date<start||e.date>end);moneySave();showToast('Riwayat minggu ini dihapus.')}
+$('expenseDate').value=todayISO();renderMoney();
+
+const SETTINGS_KEY='studyspace_settings_v1';
+function loadSettings(){try{return {...{theme:'light',fontScale:'1'},...JSON.parse(localStorage.getItem(SETTINGS_KEY)||'{}')}}catch(e){return {theme:'light',fontScale:'1'}}}
+function applySettings(settings){document.body.classList.toggle('dark-mode',settings.theme==='dark');document.body.style.setProperty('--page-zoom',settings.fontScale||'1');if($('themeSelect'))$('themeSelect').value=settings.theme||'light';if($('fontSizeSelect'))$('fontSizeSelect').value=settings.fontScale||'1'}
+function saveSettings(){const settings={theme:$('themeSelect').value,fontScale:$('fontSizeSelect').value};try{localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings))}catch(e){}applySettings(settings);showToast('Pengaturan tampilan diterapkan!')}
+$('themeSelect').addEventListener('change',saveSettings);$('fontSizeSelect').addEventListener('change',saveSettings);applySettings(loadSettings());
+let calcExpression='';
+function calcRender(){ $('calcDisplay').textContent=calcExpression||'0'; }
+function calcAppend(value){ if(calcExpression.length>100)return; if(calcExpression==='Error')calcExpression=''; calcExpression+=value;calcRender(); }
+function calcClear(){calcExpression='';calcRender();}
+function calcBackspace(){if(calcExpression==='Error')calcExpression='';else calcExpression=calcExpression.slice(0,-1);calcRender();}
+function calcEvaluate(input){
+  const tokens=input.replace(/×/g,'*').replace(/÷/g,'/').replace(/\s+/g,'');
+  if(!tokens || !/^[0-9+*/%.()\-]+$/.test(tokens))throw Error('Ekspresi tidak valid');
+  let i=0;
+  function expr(){let v=term();while(tokens[i]==='+'||tokens[i]==='-'){const op=tokens[i++],r=term();v=op==='+'?v+r:v-r;}return v;}
+  function term(){let v=factor();while(tokens[i]==='*'||tokens[i]==='/'){const op=tokens[i++],r=factor();if(op==='/'&&r===0)throw Error('Tidak bisa dibagi nol');v=op==='*'?v*r:v/r;}return v;}
+  function factor(){if(tokens[i]==='+'){i++;return factor();}if(tokens[i]==='-'){i++;return -factor();}if(tokens[i]==='('){i++;const v=expr();if(tokens[i++]!==')')throw Error('Kurung belum lengkap');return v;}const start=i;while(i<tokens.length&&/[0-9.]/.test(tokens[i]))i++;if(start===i)throw Error('Angka tidak ditemukan');const part=tokens.slice(start,i);if((part.match(/\./g)||[]).length>1)throw Error('Angka tidak valid');let n=Number(part);if(tokens[i]==='%'){n/=100;i++;}return n;}
+  const result=expr();if(i!==tokens.length||!Number.isFinite(result))throw Error('Perhitungan tidak valid');return result;
+}
+function calcEquals(){try{const result=calcEvaluate(calcExpression);calcExpression=String(Number(result.toPrecision(12)));calcRender();}catch(e){$('calcDisplay').textContent=e.message==='Tidak bisa dibagi nol'?'Tidak bisa dibagi nol':'Periksa perhitungan';calcExpression='';setTimeout(calcRender,1500);}}
+document.addEventListener('keydown',e=>{if(!$('view-kalkulator').classList.contains('active'))return;if(/^[0-9.+*/()%\-]$/.test(e.key)){calcAppend(e.key);}else if(e.key==='Enter'||e.key==='='){e.preventDefault();calcEquals();}else if(e.key==='Backspace'){calcBackspace();}else if(e.key==='Escape'){calcClear();}});
+function updateToday(){const d=new Date();$('todayLabel').textContent=d.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+updateToday();renderAll();
+</script>
+<script>
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
+</script>
+</body>
+</html>

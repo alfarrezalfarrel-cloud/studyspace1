@@ -1,0 +1,17 @@
+STUDYSPACE by alfarrezal — versi Android & Windows
+
+CARA BUKA CEPAT (Windows):
+1. Buka index.html dengan Google Chrome, Microsoft Edge, atau Firefox.
+
+CARA BUKA CEPAT (Android):
+1. Pindahkan folder ini ke HP atau ekstrak ZIP.
+2. Untuk membuka index.html secara lokal, gunakan browser yang mengizinkan file HTML lokal. Jika browser menolak, gunakan cara PWA di bawah.
+
+CARA AGAR BISA DIPASANG SEPERTI APLIKASI (PWA):
+1. Unggah semua isi folder ini ke hosting statis HTTPS, misalnya GitHub Pages atau Netlify. Jangan hanya unggah index.html; sertakan manifest.json, sw.js, dan icon.svg.
+2. Buka alamat HTTPS website dari Chrome di Android.
+3. Tekan menu ⋮ lalu pilih “Tambahkan ke layar utama” atau “Instal aplikasi”.
+4. Di Windows, buka alamat HTTPS di Chrome/Edge lalu gunakan ikon instal bila tersedia.
+
+CATATAN DATA:
+Data tersimpan di browser/perangkat masing-masing dan tidak otomatis tersinkron antarperangkat. Ekspor/sinkronisasi online belum disediakan.

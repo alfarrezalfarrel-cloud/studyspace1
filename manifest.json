@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "StudySpace by alfarrezal",
+  "short_name": "StudySpace",
+  "description": "Sistem informasi sekolah pribadi: jadwal, tugas, kalender, kalkulator, dan uang jajan.",
+  "lang": "id-ID",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5f7fb",
+  "theme_color": "#4263eb",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
